@@ -1,59 +1,57 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package buoi1;
+package OOP_Part1;
+
 import java.util.*;
-/**
- *
- * @author Tuấn
- */
+
 public class LopPhanSo {
     public static void main(String[] args) {
-        Scanner sc  = new Scanner (System.in);
-        PhanSo ps = new PhanSo();
-        ps.setTu(sc.nextLong());
-        ps.setMau(sc.nextLong());
-        System.out.println(ps.RutGonPhanSo());
-        sc.close();
+        Scanner sc = new Scanner (System.in);
+        long tu = sc.nextLong();
+        long mau = sc.nextLong();
+        PhanSo p = new PhanSo(tu,mau);
+        p.rutGon();
+        System.out.println(p);
     }
 }
+
 class PhanSo{
     private long tu,mau;
-    public PhanSo(){
-        tu = mau = 0;
+
+    public PhanSo(long tu, long mau) {
+        this.tu = tu;
+        this.mau = mau;
     }
-    public PhanSo(long tu, long mau){
-        this.tu=tu;
-        this.mau=mau;
+
+    public PhanSo() {
     }
-    public void setTu(long tu){
-        this.tu=tu;
-    }
-    public void setMau(long mau){
-        this.mau=mau;
-    }
-    public long getTu(){
+    
+    public long getTu() {
         return tu;
     }
-    public long getMau(){
+
+    public void setTu(long tu) {
+        this.tu = tu;
+    }
+
+    public long getMau() {
         return mau;
     }
-    public long USCLN(long a, long b){
-        if(b == 0) return a;
-        else return USCLN(b,a % b);
+
+    public void setMau(long mau) {
+        this.mau = mau;
     }
-    @Override
+    
     public String toString(){
-        return tu +"/"+mau;
+        return tu+"/"+mau;
     }
-    public PhanSo RutGonPhanSo(){
-        long bscnn = USCLN(tu , mau);
-        long tumoi = tu;
-        long maumoi = mau;
-        tumoi /= bscnn;
-        maumoi /= bscnn;
-        return (new PhanSo(tumoi,maumoi));
+    
+    public long USCLN(long tu, long mau){
+       if(mau==0) return tu;
+       else return USCLN(mau,tu%mau);
+    }
+    
+    public void rutGon(){
+        long m = USCLN(tu,mau);
+        tu /= m;
+        mau /= m;
     }
 }
