@@ -1,5 +1,5 @@
 
-package CodePTIT;
+package OOP_2023;
 
 import java.util.*;
 
@@ -7,30 +7,35 @@ public class TinhGiaBan1 {
     public static void main(String[] args) {
         Scanner sc = new Scanner (System.in);
         int t = Integer.parseInt(sc.nextLine());
-        List<GiaBan1> arr = new ArrayList<>();
+        List<Product1> l = new ArrayList<>();
         for(int i=1;i<=t;i++){
             String ten = sc.nextLine();
             String donVi = sc.nextLine();
             long donGia = Long.parseLong(sc.nextLine());
             long soLuong = Long.parseLong(sc.nextLine());
-            GiaBan1 x = new GiaBan1(i,ten,donVi,donGia,soLuong);
-            arr.add(x);
+            Product1 p = new Product1(i,ten,donVi,donGia,soLuong);
+            l.add(p);
         }
-        for(GiaBan1 x : arr) System.out.println(x);
+        for(Product1 p : l) System.out.println(p);
     }
 }
-class GiaBan1{
-    private String id,ten,donVi;
+
+class Product1{
+    private String ma,ten,donVi;
     private long donGia,soLuong;
 
-    public GiaBan1(int id, String ten, String donVi, long donGia, long soLuong) {
-        this.id = "MH"+String.format("%02d",id);
+    public Product1(int ma, String ten, String donVi, long donGia, long soLuong) {
+        this.ma = "MH"+String.format("%02d",ma);
         this.ten = ten;
         this.donVi = donVi;
         this.donGia = donGia;
         this.soLuong = soLuong;
     }
-
+    
+    public String toString(){
+        return id+" "+ten+" "+donVi+" "+phiVanChuyen()+" "+thanhTien()+" "+giaBan();
+    }
+    
     public long phiVanChuyen(){
         return Math.round((donGia*soLuong)*0.05);
     }
@@ -42,8 +47,5 @@ class GiaBan1{
     public long giaBan(){
         return Math.round(thanhTien() + 0.02*thanhTien());
     }
-    
-    public String toString(){
-        return id+" "+ten+" "+donVi+" "+phiVanChuyen()+" "+thanhTien()+" "+giaBan();
-    }
+ 
 }
