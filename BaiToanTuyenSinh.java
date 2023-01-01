@@ -1,5 +1,5 @@
 
-package CodePTIT;
+package OOP_2023;
 
 import java.util.*;
 public class BaiToanTuyenSinh {
