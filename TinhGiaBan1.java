@@ -33,7 +33,9 @@ class Product1{
     }
     
     public String toString(){
-        return id+" "+ten+" "+donVi+" "+phiVanChuyen()+" "+thanhTien()+" "+giaBan();
+        return this.ma + " " + this.ten + " " + this.donVi+" "
+                +(long) this.phiVanChuyen() + " " + (long) this.thanhTien() +
+                    " " + (long) this.giaBan();
     }
     
     public long phiVanChuyen(){
